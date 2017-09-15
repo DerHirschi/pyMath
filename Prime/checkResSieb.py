@@ -690,4 +690,4 @@ def checkres(res):
 
     for i in range(len(res)):
         if res[i] != pru[i]:
-            print 'ERROR {}'.format(i)
+            print 'ERROR {}  - {} - {}'.format(i, res[i], pru[i])

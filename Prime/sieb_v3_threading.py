@@ -6,19 +6,23 @@ from checkResSieb import checkres
 
 class MainThread:
 
-    bis = 100000
+    bis = 10000
     wurz = math.sqrt(bis)
     sta = 2
     res = []
-    endres = []
+    endres = [2]
+    threa = 2
 
     def __init__(self):
-
         tim = time.time()
-        MainThread.calThread(MainThread).start()
-        time.sleep(0.2)
-        MainThread.sta += 1
-        MainThread.calThread(MainThread).start()
+        for i in range(self.threa):
+
+            MainThread.calThread(MainThread).start()
+            if i != self.threa - 1:
+                time.sleep(0.1)
+                print '222222222!!!!'
+                MainThread.sta += 1
+
 
         temp = MainThread.sta
 
@@ -34,13 +38,32 @@ class MainThread:
                 #print MainThread.sta
                 #print 'wait'
                 #time.sleep(0.1)
+
+            #temp = temp - 1
+            b = temp * temp
+            a = temp
             temp = MainThread.sta
             MainThread.calThread(MainThread).start()
-            #time.sleep(0.1)
+            while a < b:
+                if a not in MainThread.res and a not in MainThread.endres:
+                    # print a
+                    MainThread.endres.append(a)
+                a += 1
+
+        a = int(MainThread.wurz)
+        b = a * a
+        while a < b:
+            if a not in MainThread.res and a not in MainThread.endres:
+                # print a
+                MainThread.endres.append(a)
+            a += 1
+
+        print MainThread.endres
 
         tim = time.time() - tim
 
         print 'Sekunden {}'.format(tim)
+        checkres(MainThread.endres)
 
     class calThread(threading.Thread):
         def __init__(self, mthr):
@@ -50,7 +73,6 @@ class MainThread:
         def run(self):
             sta = MainThread.sta
             bis = self.mainth.bis
-
             if sta not in MainThread.res:
                 n = sta
                 temp = sta * n
@@ -64,7 +86,7 @@ class MainThread:
             MainThread.sta += 1
 
 
-    """         
+"""         
         b = sta * sta
         while a < b:
             if a not in MainThread.res:
@@ -79,8 +101,9 @@ class MainThread:
         tim = time.time() - tim
         print MainThread.endres
         print 'Sekunden {}'.format(tim)
-    """
+"""
     # checkres(endres)
 
 
 MainThread()
+
