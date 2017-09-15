@@ -6,12 +6,12 @@ from checkResSieb import checkres
 
 class MainThread:
 
-    bis = 10000
+    bis = 100000
     wurz = math.sqrt(bis)
     sta = 2
     res = []
     endres = [2]
-    threa = 2
+    threa = 12
 
     def __init__(self):
         tim = time.time()
@@ -20,7 +20,7 @@ class MainThread:
             MainThread.calThread(MainThread).start()
             if i != self.threa - 1:
                 time.sleep(0.1)
-                print '222222222!!!!'
+                #print '222222222!!!!'
                 MainThread.sta += 1
 
 
@@ -79,7 +79,7 @@ class MainThread:
                 while temp <= bis:
                     temp = sta * n
                     if temp not in MainThread.res and temp <= bis:
-                        print 'start {} * n {} = {}   th : {}'.format(sta, n, temp, self)
+                        #print 'start {} * n {} = {}   th : {}'.format(sta, n, temp, self)
                         MainThread.res.append(temp)
                     n += 1
 
