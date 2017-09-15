@@ -1,36 +1,41 @@
+# Nach vorbild sieb_wiki.py ( Bool statt int )
 import math
 import time
 
 
-bis = 10000
+bis = 100000000000
 wurz = math.sqrt(bis)
 
-res = []
-endres = []
+tim = time.time()
+res = [True] * (bis + bis)
+print len(res)
+res[0] = False
+res[1] = False
+#endres = []
 sta = 2
 a = sta
-tim = time.time()
+
 
 while sta <= wurz:
 
-    if sta not in res:
+    if res[sta]:
         n = sta
         temp = sta * n
         while temp <= bis:
             temp = sta * n
-            if temp not in res and temp <= bis:
+            if res[temp] and temp <= bis:
                 # print 'start {} * n {} = {}'.format(start, n, temp)
-                res.append(temp)
+                res[temp] = False
 
             n += 1
 
     b = sta * sta
     #pri = []
     while a < b:
-        if a not in res:
-                # print a
-            endres.append(a)
-            #pri.append(a)
+        if res[a]:
+            print 'Prime: ' + str(a)
+            #endres.append(a)
+
         a += 1
 
     #print pri
@@ -38,7 +43,7 @@ while sta <= wurz:
 
 
 tim = time.time() - tim
-print endres
+#print endres
 print 'Sekunden {}'.format(tim)
 
 #checkres(endres)

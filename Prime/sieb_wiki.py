@@ -5,7 +5,8 @@ import time
 
 def main():
 
-    obergrenze = 100000000
+    obergrenze = 100000000000
+    ti = time.time()
     # Jede Zahl zwischen 1 und obergrenze wird zuerst als prim angenommen
     zahlen = [True] * (obergrenze + 1)
     # Da 0 und 1 keine Primzahlen sind, werden sie auf False gesetzt
@@ -13,7 +14,7 @@ def main():
     zahlen[1] = False
 
     i = 2
-    ti = time.time()
+
 
     while i * i <= obergrenze:
         if zahlen[i] == True:  # Die Zahl i ist als prim markiert
