@@ -1,3 +1,4 @@
 # Some Math Scripts
-Sieb des Eratosthenes - sieb.py
+- Prime
+    Sieb des Eratosthenes - sieb_v*.py
 

@@ -1,6 +1,6 @@
 import math
 import time
-from checkRes import checkres
+from checkResSieb import checkres
 
 
 bis = 1000
