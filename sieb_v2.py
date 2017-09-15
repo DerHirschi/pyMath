@@ -1,8 +1,9 @@
 import math
 import time
+from checkRes import checkres
 
 
-bis = 100000
+bis = 1000
 wurz = math.sqrt(bis)
 
 res = []
@@ -38,4 +39,6 @@ while sta <= wurz:
 tim = time.time() - tim
 print endres
 print 'Sekunden {}'.format(tim)
+
+checkres(endres)
 

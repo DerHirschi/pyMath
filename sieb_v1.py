@@ -1,5 +1,6 @@
 import math
 import time
+from checkRes import checkres
 
 
 bis = 100000
@@ -42,4 +43,6 @@ print endres
 tim = time.time() - tim
 
 print 'Sekunden {}'.format(tim)
+
+checkres(endres)
 
