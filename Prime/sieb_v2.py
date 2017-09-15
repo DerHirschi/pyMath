@@ -3,7 +3,7 @@ import time
 from checkResSieb import checkres
 
 
-bis = 1000
+bis = 100000
 wurz = math.sqrt(bis)
 
 res = []

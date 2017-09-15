@@ -6,17 +6,41 @@ from checkResSieb import checkres
 
 class MainThread:
 
-    bis = 1000
+    bis = 100000
     wurz = math.sqrt(bis)
-
+    sta = 2
     res = []
     endres = []
 
     def __init__(self):
-        t = self.calThread(self)
-        t2 = self.calThread(self)
-        t.start()
-        t2.start()
+
+        tim = time.time()
+        MainThread.calThread(MainThread).start()
+        time.sleep(0.2)
+        MainThread.sta += 1
+        MainThread.calThread(MainThread).start()
+
+        temp = MainThread.sta
+
+        #t = MainThread.calThread(MainThread)
+        #t.start()
+
+        while MainThread.sta <= MainThread.wurz:
+            print MainThread.sta
+            #print MainThread.res
+
+            while temp == MainThread.sta:
+                pass
+                #print MainThread.sta
+                #print 'wait'
+                #time.sleep(0.1)
+            temp = MainThread.sta
+            MainThread.calThread(MainThread).start()
+            #time.sleep(0.1)
+
+        tim = time.time() - tim
+
+        print 'Sekunden {}'.format(tim)
 
     class calThread(threading.Thread):
         def __init__(self, mthr):
@@ -24,41 +48,39 @@ class MainThread:
             self.mainth = mthr
 
         def run(self):
-            sta = 2
-            a = sta
-            wurz = self.mainth.wurz
+            sta = MainThread.sta
             bis = self.mainth.bis
-            tim = time.time()
 
-            while sta <= wurz:
-
-                if sta not in MainThread.res:
-                    n = sta
+            if sta not in MainThread.res:
+                n = sta
+                temp = sta * n
+                while temp <= bis:
                     temp = sta * n
-                    while temp <= bis:
-                        temp = sta * n
-                        if temp not in MainThread.res and temp <= bis:
-                            #print 'start {} * n {} = {}'.format(sta, n, temp)
-                            MainThread.res.append(temp)
+                    if temp not in MainThread.res and temp <= bis:
+                        print 'start {} * n {} = {}   th : {}'.format(sta, n, temp, self)
+                        MainThread.res.append(temp)
+                    n += 1
 
-                        n += 1
+            MainThread.sta += 1
 
-                b = sta * sta
-                while a < b:
-                    if a not in MainThread.res:
-                            # print a
-                            MainThread.endres.append(a)
-                    a += 1
 
-                print MainThread.endres
-                sta += 1
+    """         
+        b = sta * sta
+        while a < b:
+            if a not in MainThread.res:
+                    # print a
+                MainThread.endres.append(a)
+            a += 1
 
-            time.sleep(1)
-            tim = time.time() - tim
             print MainThread.endres
-            print 'Sekunden {}'.format(tim)
+            
 
-# checkres(endres)
+        time.sleep(1)
+        tim = time.time() - tim
+        print MainThread.endres
+        print 'Sekunden {}'.format(tim)
+    """
+    # checkres(endres)
 
 
 MainThread()
