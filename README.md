@@ -5,3 +5,6 @@
 #- Fibonacci
 -   Fibonacci Rechner - fibu_count.py
 
+#- Sort
+-   simple Bubble sort - Bubble.py
+
