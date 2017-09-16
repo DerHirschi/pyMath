@@ -1,9 +1,10 @@
+#!/usr/bin/env python
 # Nach vorbild sieb_wiki.py ( Bool statt int )
 import math
 import time
 
 
-bis = 100000000000
+bis = 100000
 wurz = math.sqrt(bis)
 
 tim = time.time()

@@ -5,7 +5,7 @@ import time
 
 def main():
 
-    obergrenze = 100000000000
+    obergrenze = 1000000000
     ti = time.time()
     # Jede Zahl zwischen 1 und obergrenze wird zuerst als prim angenommen
     zahlen = [True] * (obergrenze + 1)

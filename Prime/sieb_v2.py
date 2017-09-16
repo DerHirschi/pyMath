@@ -2,7 +2,7 @@ import math
 import time
 
 
-bis = 10000
+bis = 100000000000
 wurz = math.sqrt(bis)
 
 res = []
