@@ -20,6 +20,8 @@ def primes(n):
 
 
 ti = time.time()
-print primes(10000000)
+res = primes(60000000)
 print time.time() - ti
+
+print res[-1]
 
