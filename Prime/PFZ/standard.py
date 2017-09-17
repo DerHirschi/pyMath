@@ -1,38 +1,46 @@
 import time
 
-def checkprime(inp):
+def primes(n):
 
-    ret = True
-    div = float(2)
-    while div < inp and ret:
+   s = set(range(3, n+1, 2))
 
-        res = inp / div
-        if res % 1 == 0:
-            ret = False
-            break
-        div += 1
-    return ret
+   if n >= 2:
+       s.add(2)
+   m = 3
+   while m * m < n:
+       s.difference_update(range(m*m, n+1, 2*m))
+       m += 2
+       while m not in s:
+           m += 2
 
+   return sorted(s)
 
 def pfz(n):
     ret = []
-
-    for i in range(2, n + 1, 1):
-        if checkprime(i) and n > 1:
+    prime = primes(n)
+    for i in range(len(prime)):
+        if n > 1.0:
             n = float(n)
-            while n / i % 1 == 0:
-                n = n / i
+            p = prime[i]
+            while n / p % 1 == 0:
+                n = n / p
                 if n % 1 == 0:
-                    ret.append(i)
+                    ret.append(p)
                     print ret
                     print n
 
                 else:
                     break
+        elif n == 1.0:
+            break
 
-    return ret
+    if n == 1.0:
+        return ret
+    else:
+        return []
 
 ti = time.time()
-print pfz(240)
+print pfz(56436588)
 print time.time() - ti
+#print primes(464364)
 
